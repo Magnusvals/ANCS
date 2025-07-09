@@ -14,7 +14,7 @@ The other way is to use SDI return feed from the ATEM switcher to the camera, sa
 I wanted a solution to contol the camera over network if you either dont want to use a return SDI cable or if the signal transmitted from camera to switcher is thru wireless video transmission. 
 
 So i created a system that connects to the network with ethernet using a POE driven ESP32-S3 ETH that talks to the ATEM using a modified version of Skaarhois's ATEM library.
-Then transmit the data over 2.4Ghz ESP-NOW protocol to a similar ESP32-S3 ETH connected to the camera with a USB-C to ethernet dongle. 
+Then transmit the data over 2.4Ghz ESP-NOW protocol to a similar ESP32-S3 ETH connected to the camera with a USB-C to ethernet adapter. 
 This system sould work with any supported Blackmagic Camera that support the Blackmagic REST API protocol.
 
 System sould be modifiable, but the code is quite spaghetti structured at the moment.   
