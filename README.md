@@ -1,5 +1,5 @@
-# ANCU
-Atem Network Controller unit!
+# ANCS
+Atem Network Controller System!
 
 Hi, have not made so many Githubs before so will try and do my best.
 
