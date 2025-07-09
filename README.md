@@ -50,6 +50,6 @@ Settings for the system is thru a web GUI i made that is running on the base con
 For settings on the remote camera receivers, there is a web Gui running on a wifi created by the remote controller.
 Here you can disable certan functions and also adjust if it is a stand alone controller or talks to the base controller.
 
-There is also battery driven ESP32-C3 based telly indicator lights that also incorporates to the system.
+There is also battery driven ESP32-C3 based tally indicator lights that also incorporates to the system.
 It could have a 5-6 hour work time and is charged thru USB-C and can see battery level on webgui of base controller.
 
