@@ -53,3 +53,47 @@ Here you can disable certan functions and also adjust if it is a stand alone con
 There is also battery driven ESP32-C3 based tally indicator lights that also incorporates to the system.
 It could have a 5-6 hour work time and is charged thru USB-C and can see battery level on webgui of base controller.
 
+
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
+
+### Third-party libraries used:
+
+- **[ATEMbase](https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEMbase)**  
+  by Kasper Skårhøj — GPL v3
+
+- **[ATEMuni](https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEMuni)**  
+  by Kasper Skårhøj — GPL v3 (modified in this project)
+
+- **[ESPAsyncWebServer](https://github.com/ESP32Async/ESPAsyncWebServer)**  
+  by ESP32Async — LGPL v3
+
+- **[Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306)**  
+  by Adafruit — BSD 3-Clause
+
+- **[Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)**  
+  by Adafruit — BSD 3-Clause
+
+- **[ArduinoOTA](https://github.com/espressif/arduino-esp32/tree/master/libraries/ArduinoOTA)**  
+  by Espressif — LGPL 2.1
+
+- **[WiFi](https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi)**  
+  by Espressif — LGPL 2.1
+
+- **[Preferences](https://github.com/espressif/arduino-esp32/tree/master/libraries/Preferences)**  
+  by Espressif — LGPL 2.1
+
+- **[ESP-NOW](https://github.com/espressif/esp-idf/blob/master/components/esp_wifi/include/esp_now.h)**  
+  by Espressif — Apache 2.0
+
+- **[esp_wifi](https://github.com/espressif/esp-idf)**  
+  by Espressif — Apache 2.0
+
+Other headers like `<Wire.h>`, `<string>`, `<cstdint>`, and `<cctype>` are part of standard libraries and require no attribution.
+
+All third-party libraries are compatible with GPL v3. Attribution is provided here in accordance with license requirements.
+
+
+
