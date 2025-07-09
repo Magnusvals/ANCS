@@ -1,0 +1,3 @@
+BSD 3-Clause License
+
+Full license text available at: https://opensource.org/license/bsd-3-clause/
