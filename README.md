@@ -7,7 +7,7 @@ I recently purchased the Blackmagic Micro Studio Camera 4K G2 and I have been co
 
 There is a already function builtin to using a ATEM either with SDI or HDMI to control the color, whitebalance, tint, tally and so.
 
-This is either done by using a HDMI cable from a suported Blackmagic camera say a Pocket 6K or Micro Studio Camera 4K G2 to send control data over the CEC line.
+This is either done by using a HDMI cable from a supported Blackmagic camera say a Pocket 6K or Micro Studio Camera 4K G2 to a Atem Mini to send control data over the CEC line.
 The other way is to use SDI return feed from the ATEM switcher to the camera, say a Ursa mini or Micro Studio Camera 4K G2. 
 
 
