@@ -30,10 +30,10 @@ Thing i have not gotten to work is:
 
 Things that can be controlled thru the Atem software to the camera via my system is:
   - Iris
-  - Gain (i have only tested for Gain, ISO would need to be added)
+  - Gain (i have only tested for Gain, ISO would need to be tested)
   - WhiteBalance
   - Tint
-  - Shutter
+  - Shutter (Angle and Speed is supported)
   - Colorbars
   - Detail Sharpening
   - Lift Wheels
