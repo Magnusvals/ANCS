@@ -22,7 +22,8 @@ System sould be modifiable, but the code is quite spaghetti structured at the mo
 I have also made some versions of the code that only uses one ESP32 that connects to camera and sends directly to camera.
 So could be a proxy version if you only want to use SDI and ethernet cable to the camera insted of 2 SDIs.
 
-I have gotten most of the CCU info to go to the camera (atleast on my Micro Studio Camera). 
+I have gotten most of the CCU info to go to the camera (atleast on my Micro Studio Camera).
+
 Thing i have not gotten to work is: 
   - Tally lights on the camera, this is a missing part of the REST API and i have sent Blackmagic an email about it to be added.
   - Focus is a little weird on the Atem, and I dont have upmost priority on this so will have to wait.
