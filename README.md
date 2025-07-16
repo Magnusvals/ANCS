@@ -1,4 +1,4 @@
-<img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/a2075686-662e-475d-adf8-1aa81e2b5456" /># ANCS
+# ANCS
 Atem Network Controller System!
 
 Hi, have not made so many Githubs before so will try and do my best.
