@@ -1,4 +1,4 @@
-# ANCS
+<img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/a2075686-662e-475d-adf8-1aa81e2b5456" /># ANCS
 Atem Network Controller System!
 
 Hi, have not made so many Githubs before so will try and do my best.
@@ -53,8 +53,19 @@ Here you can disable certain functions and also adjust if it is a stand alone co
 
 There is also battery driven ESP32-C3 based tally indicator lights that also incorporates to the system.
 It could have a 5-6 hour work time and is charged thru USB-C and can see battery level on webgui of base controller.
+[This is not finished. needs to test]
 
-3D print files and schematics needs to be added to repo!
+[3D print files and schematics needs to be added to repo!]
+
+
+How to upload to waveshare esp32-s3 eth Base and camera:
+Select 
+
+
+Compile time can take a while. between 3-5 minutes. 
+<img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
+
+
 
 
 ## License
