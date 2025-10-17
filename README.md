@@ -3,22 +3,22 @@
 Note: This is one of my first GitHub projects — I’ll keep improving the documentation as the project evolves!
 
 # 📖Table of Contents
-1. Overview
-2. How It Works
-3. Supported Cameras (as of October 2025)
-4. ATEM Control Features
-5. Current Limitations
-6. Web Setup Interface
-7. Future Development
-8. Hardware
-9. Antenna Selection
-10. Arduino IDE Setup
-11. Uploading Firmware
-12. System Architecture
-13. Base Web Setup
-14. Known Missing Features
-15. USB-C Ethernet Adapters
-16. License
+1. [Overview](https://github.com/Magnusvals/ANCS/blob/main/README.md#overview)
+2. [How It Works](https://github.com/Magnusvals/ANCS/blob/main/README.md#how-it-works)
+3. [Supported Cameras (as of October 2025)](https://github.com/Magnusvals/ANCS/blob/main/README.md#supported-cameras-as-of-october-2025)
+4. [ATEM Control Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#atem-control-features)
+5. [Current Limitations](https://github.com/Magnusvals/ANCS/blob/main/README.md#current-limitations)
+6. [Web Setup Interface](https://github.com/Magnusvals/ANCS/blob/main/README.md#web-setup-interface)
+7. [Future Development](https://github.com/Magnusvals/ANCS/blob/main/README.md#future-development)
+8. [Hardware](https://github.com/Magnusvals/ANCS/blob/main/README.md#hardware)
+9. [Antenna Selection](https://github.com/Magnusvals/ANCS/blob/main/README.md#antenna-selection)
+10. [Arduino IDE Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#arduino-ide-setup)
+11. [Uploading Firmware](https://github.com/Magnusvals/ANCS/blob/main/README.md#uploading-firmware)
+12. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
+13. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
+14. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
+15. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
+16. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
 # Overview
