@@ -142,12 +142,46 @@ First download Aruiono IDE from website:
 https://www.arduino.cc/en/software/
 
 I now in october 2025 use version 2.3.6 but sould work on newer versions.
-Once it is installed you need to add the ESP32 in the boards manager
+
+Once it is installed you need to add the ESP32 in the boards manager 
+<img width="429" height="801" alt="image" src="https://github.com/user-attachments/assets/146914d4-f387-4147-9605-ab6f7e1766e6" />
+I have tested with version 3.3.0
 
 
 There is a lot of librarys in use and since the code will take 3-10 minutes per compile be sure to have all libraries installed.
+All theese librarys can be installed thru library manager:
+- Preferences Ver 2.1.0 (By Volodymyr Shymanskyy)
+- FastLED Ver 3.10.1 (By Daniel Garcia)
+- ArduinoJson Ver 7.4.2 (By Benoit Blanchon)
+- TMCStepper Ver 0.7.3 (By teemuatlut)
+- ESP32Encoder Ver 0.11.8 (By Kevin Harrington)
+- Adafruit GFX Library Ver 1.12.1 (By Adafruit)
+- Adafruit_SSD1306 Ver 2.5.14 (By Adafruit)
 
+  
+SPI.h
+Ethernet.h
+WiFi ??
+WebServer
+DNSServer
+esp_now (included in ESP32 3.3.0)
+esp_wifi (included in ESP32 3.3.0)
 
+These next two librarys is custom modified versions of Skaarhoj's amazing breakdown of the ATEM software protocol. 
+I have modified it to work with newer versions of Atem software since multiple thing changed between Atem Software changes.
+
+A lot of removing of non relevant code is removed from ATEMUniFix compared to ATEMuni to use less storage and ram on ESP32-S3, but all relevant code is still included for this project to work. 
+
+ATEMbaseFix (Extensive modified version of AtemBase by Skaarhoj)
+ATEMuniFix (Extensive modified version of AtemUni by Skaarhoj)
+
+I fixed the issues so most Atem software versions sould work.
+I have tested with Atem 9.5.1 on Atem mini pro.
+
+Download and install the library from Skaarhoi's github:
+https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEM
+
+Then also drag in these files in the library location where arduino has librarys. 
 
 
 
@@ -155,8 +189,8 @@ There is a lot of librarys in use and since the code will take 3-10 minutes per 
 I use these settings below
 
 <img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
-
-Compile time can take a while. between 3-10 minutes. 
+All ESP32-S3 will use different COM port so one board could use COM19 and another one could use COM9, but they always use the same one every time. so first will always use COM19 and second use COM9
+But just check that you upload to correct board before pressing upload since compile time is long. 
 
 
 
