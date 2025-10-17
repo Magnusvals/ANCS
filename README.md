@@ -145,21 +145,21 @@ I now in october 2025 use version 2.3.6 but sould work on newer versions.
 
 Once it is installed you need to add the ESP32 in the boards manager 
 <img width="429" height="801" alt="image" src="https://github.com/user-attachments/assets/146914d4-f387-4147-9605-ab6f7e1766e6" />
+
 I have tested with version 3.3.0
 
 
-There is a lot of librarys in use and since the code will take 3-10 minutes per compile be sure to have all libraries installed.
+There is a lot of libraries in use and since the code will take 3-10 minutes per compile be sure to have all libraries installed.
 All theese librarys can be installed thru library manager:
 - Preferences Ver 2.1.0 (By Volodymyr Shymanskyy)
 - FastLED Ver 3.10.1 (By Daniel Garcia)
 - ArduinoJson Ver 7.4.2 (By Benoit Blanchon)
 - TMCStepper Ver 0.7.3 (By teemuatlut)
-- ESP32Encoder Ver 0.11.8 (By Kevin Harrington)
-- Adafruit GFX Library Ver 1.12.1 (By Adafruit)
-- Adafruit_SSD1306 Ver 2.5.14 (By Adafruit)
+- ESP32Encoder Ver 0.11.8 (By Kevin Harrington) 
+- Adafruit_SSD1306 Ver 2.5.14 (By Adafruit) (install all Dependencies)
 
   
-SPI.h
+SPI (Included in Arduino IDE)
 Ethernet.h
 WiFi ??
 WebServer
@@ -181,16 +181,22 @@ I have tested with Atem 9.5.1 on Atem mini pro.
 Download and install the library from Skaarhoi's github:
 https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEM
 
-Then also drag in these files in the library location where arduino has librarys. 
+Then download both ATEMuni
 
 
 
 
 I use these settings below
 
+Select board as ESP32 then ESP32S3 Dev Module
+Select correct COM port for that connected board.
+Set USB CDC On Boot to enabv
+
 <img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
 All ESP32-S3 will use different COM port so one board could use COM19 and another one could use COM9, but they always use the same one every time. so first will always use COM19 and second use COM9
 But just check that you upload to correct board before pressing upload since compile time is long. 
+
+
 
 
 
