@@ -178,11 +178,12 @@ ATEMuniFix (Extensive modified version of AtemUni by Skaarhoj)
 I fixed the issues so most Atem software versions sould work.
 I have tested with Atem 9.5.1 on Atem mini pro.
 
-Download and install the library from Skaarhoi's github:
-https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEM
+I have inlcuded all librarys from Skaarhoj in this repo for easy download since its slit into different repos on his side. 
 
-Then download both ATEMuni
+Download [these](https://github.com/Magnusvals/ANCS/tree/main/Atem_Fix_libraries) libraries from this repository.
 
+Install all five ZIP libraies thru the Sketch -> Include Library -> Add .ZIP library. 
+<img width="648" height="443" alt="image" src="https://github.com/user-attachments/assets/abbcb0a4-c83e-46fb-9e34-6d528a549df4" />
 
 
 
@@ -190,7 +191,6 @@ I use these settings below
 
 Select board as ESP32 then ESP32S3 Dev Module
 Select correct COM port for that connected board.
-Set USB CDC On Boot to enabv
 
 <img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
 All ESP32-S3 will use different COM port so one board could use COM19 and another one could use COM9, but they always use the same one every time. so first will always use COM19 and second use COM9
