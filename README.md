@@ -17,7 +17,7 @@ So i created a system that connects to the network with ethernet using a POE dri
 Then transmit the data over 2.4Ghz ESP-NOW protocol to a similar ESP32-S3 connected to the camera with a USB-C to ethernet adapter. 
 This system sould work with any supported Blackmagic Camera that support the Blackmagic REST API protocol.
 
-Cameras supported as of October 2025:
+# Cameras supported as of October 2025:
 - Blackmagic URSA Cine 12K LF
 - Blackmagic URSA Cine 17K 65
 - Blackmagic URSA Cine Immersive
@@ -35,9 +35,7 @@ Cameras supported as of October 2025:
 - Blackmagic Pocket Cinema Camera 6K G2 (Must use fw 8.6 but not tested)
 - Blackmagic Pocket Cinema Camera 6K Pro (Must use fw 8.6 but not tested)
   
-Beta Firmware 8.6 link:
-https://www.blackmagicdesign.com/support/readme/66b832f9f1b04e92960a3117d7a741df
-
+Beta Firmware 8.6 [link](https://www.blackmagicdesign.com/support/readme/66b832f9f1b04e92960a3117d7a741df):
 
 System sould be modifiable, but the code is quite spaghetti structured at the moment.
 There is a mix of AI and self written code but a lot of tesing is done to keep most bugs out. 
@@ -144,12 +142,13 @@ https://www.arduino.cc/en/software/
 I now in october 2025 use version 2.3.6 but sould work on newer versions.
 
 Once it is installed you need to add the ESP32 in the boards manager 
-<img width="429" height="801" alt="image" src="https://github.com/user-attachments/assets/146914d4-f387-4147-9605-ab6f7e1766e6" />
+
+<img width="300" height="600" alt="image" src="https://github.com/user-attachments/assets/146914d4-f387-4147-9605-ab6f7e1766e6" />
 
 I have tested with version 3.3.0
 
 
-There is a lot of libraries in use and since the code will take 3-10 minutes per compile be sure to have all libraries installed.
+There is of course libraries in use and since the code will take 3-10 minutes per compile be sure to have all libraries installed.
 All theese librarys can be installed thru library manager:
 - Preferences Ver 2.1.0 (By Volodymyr Shymanskyy)
 - FastLED Ver 3.10.1 (By Daniel Garcia)
@@ -157,15 +156,6 @@ All theese librarys can be installed thru library manager:
 - TMCStepper Ver 0.7.3 (By teemuatlut)
 - ESP32Encoder Ver 0.11.8 (By Kevin Harrington) 
 - Adafruit_SSD1306 Ver 2.5.14 (By Adafruit) (install all Dependencies)
-
-  
-SPI (Included in Arduino IDE)
-Ethernet.h
-WiFi ??
-WebServer
-DNSServer
-esp_now (included in ESP32 3.3.0)
-esp_wifi (included in ESP32 3.3.0)
 
 These next two librarys is custom modified versions of Skaarhoj's amazing breakdown of the ATEM software protocol. 
 I have modified it to work with newer versions of Atem software since multiple thing changed between Atem Software changes.
@@ -179,13 +169,12 @@ I fixed the issues so most Atem software versions sould work.
 I have tested with Atem 9.5.1 on Atem mini pro.
 
 I have inlcuded all librarys from Skaarhoj in this repo for easy download since its slit into different repos on his side. 
+But for more info on original code see [here](https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs).
 
-Download [these](https://github.com/Magnusvals/ANCS/tree/main/Atem_Fix_libraries) libraries from this repository.
+Download [these](https://github.com/Magnusvals/ANCS/tree/56aab569b6b1b63f952bf37fc4255abd2fbc400a/Libraries) libraries from this repository.
 
-Install all five ZIP libraies thru the Sketch -> Include Library -> Add .ZIP library. 
+Install all three ZIP libraies thru the Sketch -> Include Library -> Add .ZIP library. 
 <img width="648" height="443" alt="image" src="https://github.com/user-attachments/assets/abbcb0a4-c83e-46fb-9e34-6d528a549df4" />
-
-
 
 I use these settings below
 
@@ -193,11 +182,88 @@ Select board as ESP32 then ESP32S3 Dev Module
 Select correct COM port for that connected board.
 
 <img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
+
 All ESP32-S3 will use different COM port so one board could use COM19 and another one could use COM9, but they always use the same one every time. so first will always use COM19 and second use COM9
 But just check that you upload to correct board before pressing upload since compile time is long. 
 
+Upload the base code to the single base for the system, then upload the camera receiver code to the number of receivers. 
+
+All receivers use same code.
 
 
+# How the system is set up!
+
+The Base unit talks to the atem over IP and can be powered over PoE or USB-C 5v
+
+The wireless mode is now stuck at channel 6 in the 2.4GHz Wifi Spectrum but can be changed in code BEFORE uploading to ESP32-S3 (But will add later to change this channel in webgui on both base and receivers)
+
+ESP-NOW is a wireless protocol developed by Espressif to simply and energy effincetly send data wirelessly between different ESP32 chips.
+
+In this setup I use Broadcast ESP-NOW for its super low latency, and simple setup. 
+I started the design of my code around the Unicast mode but when receivers was missing / powered off, the Base unit was retransmitting data and that is not what is needed since this is a high-priority low latency design and all new data received from ATEM is latest and the only correct info to use.
+
+Each and every ESP32-S3 will habe a MAC table that follows its own chip and i use this to generate the two MAC addresses for each ESP32-S3 to use. 
+- One wireless MAC address
+- One Ethernet MAC address
+
+The Ethernet mac address will have a simelar MAC as the wireless one. 
+The last octet is adusted up by 3. 
+
+So if Wireless mac is 10:10:10:10:10:10
+Then ethernet MAC is 10:10:10:10:10:13
+
+this is auto generated for each ESP32-S3 to have its own address for the system to send messages and reject if a message is not for that ESP32-S3.
+
+when uploading to ESP32-S3 in Arduino IDE and during booting of the code it will output both its MAC addresses in the serial terminal, and show in its Web gui.
+
+so the setup requires that you put in each camera receivers wireless MAC into a respective camera slot in the Base Web Gui and to put the Base wireless MAC in all camera receivers Web gui.
+
+By default the Base sould have set up its IP as 192.168.1.200 and talk to an ATEM at 192.168.1.100.
+This will show up on OLED if this is wired up to ESP32-S3.
+
+To connect to the Camera Reveiver Web Gui, the unit will open a wireless network that a computer or phone can connect over wifi. 
+The name will be ANCS- and the wireless MAC address in a 1234567890AB format, so "ANCS-1234567890AB".
+The password will be "12345678" (can be changed in code BEFORE uploading to Camera Receiver)
+
+The Camera Reveiver is equiped with a Captive portal + DNS + DHCP setup (simelar to airport wifi) where it will autoamitcly open a page on the device when connected. 
+Here the setting for adding in Base Wireless MAC can be put in. 
+
+The captive portal sould work pretty good on Iphone, Ipad, Android and Mac. Windows can be a little stubborn so if it does not auto pop-up. the IP of the website shall be "192.168.4.1".
+
+
+
+Connect to the unit over network from a computer or phone with a browser. There will be 7 tabs at the top.
+- Base Settings
+- Camera 1 thru 6 Settings
+
+In the Base Settings you can change:
+- IP setting of BASE
+- IP setting for where ATEM is (+ Model of ATEM when connection is sucsessfull)
+- Signal strength (RSSI in dBm) that Remotes report back to Base. 
+
+In the Camera sections:
+- What input that camera slot will listen to on the ATEM
+- Brightness of tally inticator on the RGB LED on the ESP32-S3
+- IP address that W5500 chipset on receiver will use for talking with camera
+- IP address of connected camera
+- Set Wireles MAC of receiver for that camera slot
+- Enable or disable settings that the system will not write to camera (if want to adjust settings avallible in the touch / buttons on camera)
+- Amount of current the zoom motor will use if remote has been connected with a stepper motor on the zoom lens
+- Direction of motor turning
+- Focus mode (Incremental or Direct)
+
+
+The motor and focus stuff last int the list over is for more advanced setups for making your own focus and zoom demands. 
+
+[NEED to add Pictures / info on these more advandec setups]
+
+
+
+
+
+# Missing things for now (compared to SDI returnfeed / HDMI CEC):
+- I have not implemented focus control from atem software to the camera since the ATEM camera page Focus controll is realy hard to work with. May be added later...
+- Tally ring around camera monitor (Green / Red), Blackmagic does not support this over Rest API per october 2025 and i have asked for it to be added. This has been semi fixed with the onboard RGB LED on the ESP32-S3. In my box design for the remotes i use Toslink optical cable to postion the light more convinient for camaras with operators on them. 
 
 
 ## License
@@ -207,7 +273,7 @@ This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
 ### Third-party libraries used:
 
 - **[ATEMbase](https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEMbase)**  
-  by Kasper Skårhøj — GPL v3
+  by Kasper Skårhøj — GPL v3 (modified in this project)
 
 - **[ATEMuni](https://github.com/kasperskaarhoj/SKAARHOJ-Open-Engineering/tree/master/ArduinoLibs/ATEMuni)**  
   by Kasper Skårhøj — GPL v3 (modified in this project)
