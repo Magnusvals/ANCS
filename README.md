@@ -56,6 +56,7 @@ Things that can be controlled thru the Atem software to the camera via my system
   - Zoom (With compaible lenses / external motor system)
 
 
+
 System sould be modifiable, but the code is quite spaghetti structured at the moment.
 There is a mix of AI and self written code but a lot of tesing is done to keep most bugs out. 
 If bugs is found please report issue. 
@@ -65,7 +66,7 @@ I have gotten most of the CCU info to go to the camera (atleast on my Micro G2).
 Thing i have not gotten to work is: 
   - Tally lights on the camera, this is a missing part of the REST API and i have sent Blackmagic an email about it to be added.
   - Focus is a little weird on the Atem, and I dont have upmost priority on this so will have to wait.
-  - Zoom only would work on cameras with supported lens mounts and lenses.
+
 
 For MFT lens mount i have tested the Panasonic 45-175 Powerzoom lens and it works nice with the system.
 But a external motor system using a Nema17 stepper motor and a TMC2209 silent stepper driver can be added to camera receiver to drive non powerzoom lenses.
