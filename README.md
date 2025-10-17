@@ -1,37 +1,64 @@
-# ANCS
-Atem Network Controller System!
+# ANCS (Atem Network Controller System)
+
 
 Hi, have not made so many Githubs before so will try and do my best.
 
 I recently purchased the Blackmagic Micro Studio Camera 4K G2 and I have been cooking with some code for a while for transfering the CCU camera information from the Blackmagic ATEM video mixers to compatible Blackmagic Cameras using REST API.
 
-There is a already function builtin to using a ATEM either with SDI or HDMI to control the color, whitebalance, tint, tally and so.
+There is a already builtin function using a ATEM either with SDI or HDMI to control the color, whitebalance, tint, tally and so.
 
 This is either done by using a HDMI cable from a supported Blackmagic camera say a Pocket 6K or Micro Studio Camera 4K G2 to a Atem Mini to send control data over the CEC line.
 The other way is to use SDI return feed from the ATEM switcher to the camera, say a Ursa mini or Micro Studio Camera 4K G2. 
 
 
-I wanted a solution to contol the camera over network if you either dont want to use a return SDI cable or if the signal transmitted from camera to switcher is thru wireless video transmission. 
+I wanted a solution to contol the camera over network if you either dont want to use a return SDI cable or if the signal transmitted from camera to switcher is fully wireless video transmission. 
 
-So i created a system that connects to the network with ethernet using a POE driven ESP32-S3 ETH that talks to the ATEM using a modified version of Skaarhoj's ATEM library.
-Then transmit the data over 2.4Ghz ESP-NOW protocol to a similar ESP32-S3 ETH connected to the camera with a USB-C to ethernet adapter. 
+So i created a system that connects to the network with ethernet using a POE driven ESP32-S3 that talks to the ATEM using a modified version of Skaarhoj's ATEM library.
+Then transmit the data over 2.4Ghz ESP-NOW protocol to a similar ESP32-S3 connected to the camera with a USB-C to ethernet adapter. 
 This system sould work with any supported Blackmagic Camera that support the Blackmagic REST API protocol.
 
-System sould be modifiable, but the code is quite spaghetti structured at the moment.   
+Cameras supported as of October 2025:
+- Blackmagic URSA Cine 12K LF
+- Blackmagic URSA Cine 17K 65
+- Blackmagic URSA Cine Immersive
+- Blackmagic PYXIS 6K
+- Blackmagic Cinema Camera 6K
+- Blackmagic URSA Broadcast G2
+- Blackmagic Studio Camera 4K Plus
+- Blackmagic Studio Camera 4K Pro
+- Blackmagic Studio Camera 6K Pro
+- Blackmagic Studio Camera 4K Plus G2
+- Blackmagic Studio Camera 4K Pro G2
+- Blackmagic Micro Studio Camera 4K G2
+- Blackmagic Pocket Cinema Camera 4K (Must use fw 8.6 but not tested) 
+- Blackmagic Pocket Cinema Camera 6K (Must use fw 8.6)
+- Blackmagic Pocket Cinema Camera 6K G2 (Must use fw 8.6 but not tested)
+- Blackmagic Pocket Cinema Camera 6K Pro (Must use fw 8.6 but not tested)
+  
+Beta Firmware 8.6 link:
+https://www.blackmagicdesign.com/support/readme/66b832f9f1b04e92960a3117d7a741df
 
-I have also made some versions of the code that only uses one ESP32 that connects to camera and sends directly to camera.
-So could be a proxy version if you only want to use SDI and ethernet cable to the camera insted of 2 SDIs.
 
-I have gotten most of the CCU info to go to the camera (atleast on my Micro Studio Camera).
+System sould be modifiable, but the code is quite spaghetti structured at the moment.
+There is a mix of AI and self written code but a lot of tesing is done to keep most bugs out. 
+If bugs is found please report issue. 
+
+I have gotten most of the CCU info to go to the camera (atleast on my Micro G2).
 
 Thing i have not gotten to work is: 
   - Tally lights on the camera, this is a missing part of the REST API and i have sent Blackmagic an email about it to be added.
   - Focus is a little weird on the Atem, and I dont have upmost priority on this so will have to wait.
-  - Zoom only would work on cameras with supported lens mounts and lenses. (I am working on a external motor that talks to the remote controller to enable zoom to be adjusted on handle and from atem software) 
+  - Zoom only would work on cameras with supported lens mounts and lenses.
+
+For MFT lens mount i have tested the Panasonic 45-175 Powerzoom lens and it works nice with the system.
+But a external motor system using a Nema17 stepper motor and a TMC2209 silent stepper driver can be added to camera receiver to drive non powerzoom lenses.
+With my setup i either use the panasonic powerzoom or i have a ef to mft 0.71 Viltrox speedbooster with a Canon 24-105 lens.   
+
+
 
 Things that can be controlled thru the Atem software to the camera via my system is:
   - Iris
-  - Gain (i have only tested for Gain, ISO would need to be tested)
+  - Gain / ISO
   - WhiteBalance
   - Tint
   - Shutter (Angle and Speed is supported)
@@ -58,13 +85,78 @@ It could have a 5-6 hour work time and is charged thru USB-C and can see battery
 [3D print files and schematics needs to be added to repo!]
 
 
-How to upload to waveshare esp32-s3 eth Base and camera:
-Select 
+# Parts for system
+Parts needed could be quite low or higher if you want more complex setup with camera handels for focus and zoom with said zoom motor if using non MFT powerzoom lens.
+
+Waveshare ESP32-S3 ETH PoE dev board (https://www.waveshare.com/esp32-s3-eth.htm)
+Will hereby only call this by "ESP32-S3"
+
+I bought the ESP32-S3 on Aliexpress but can get elsewhere.
+
+Key notes on it:
+  - Wiznet W5500 10M/100M Ethernet chip 
+  - POE on said W5500
+  - 2.4ghz Wifi chip
+  - Supports ESP-NOW on said wifi chip.
+  - Has built in wifi antenna but can be changed to an external antenna using IPX connector
+  - and has quite alot of GPIO pins for use.
+  - One adressable RGB LED on underside (i use this for tally light on Receivers)
+  - SD card reader (i dont use)
+  - Camera Header (i dont use)
+
+One note is that now this code is only tested with this board in mind, Atem connection ONLY goes over W5500 chipset and same for remote to camera goes only over W5500 chipset. 
+Wifi is never used for CCU info transmition and only uses a simplified MAC-UDP broadcast like ESP-NOW wireless network for communication between Base, tally remotes and camera remotes.   
+Wifi is only enabeled on Camera receiver IF and only IF base is not setup to talk to remote or is not avalible (say powered down or out of range) then settings normaly done on 
+
+**For the simplest setup you would only need one ESP32-S3 for base and one ESP32-S3 per camera with USB-C to ethernet dongle or ethernet directly to camera. no external antennas and mabye a 3d printed enclosure to hold the ESP32-S3s.**
+
+I would strongly recomend to use a dedicated antenna. here is how to switch to external on board:
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/45c95977-300e-44d0-8fa0-578485b925c2" />
+
+Add an external antenna:
+I use RP-SMA (no pin) to IPX leads then use a SMA antenna (has pin) that is 2.4GHz (this is important) 
+Many antennas could be markeded as 2.4 but could be actualy for 433 / 833 / 900 MHz use so testing antennas and seeing strengt on the Webgui / OLED is important for best reseption  
 
 
-Compile time can take a while. between 3-5 minutes. 
+if you want to have a little more fun you could add a OLED to the base to see info on for easier troubleshooting:
+  - Base IP
+  - ATEM IP
+  - Firmware Version
+  - Type of mixer (ATEM mini pro, ATEM 1 M/E.....)
+  - Tally states per camera
+  - Battery (on tally only units)
+  - Signal strength
+  - error if Atem is not found on set ip
+    
+Generic OLED display (128x64 0.96") but any dimensions sould work but my 3D design only has space for 0.96".
+it talks over I2C and is only 4 wires to solder
+- 3.3v
+- GND
+- Data
+- Clock
+
+
+# How to upload to waveshare esp32-s3 eth Base and camera:
+
+First download Aruiono IDE from website:
+https://www.arduino.cc/en/software/
+
+I now in october 2025 use version 2.3.6 but sould work on newer versions.
+Once it is installed you need to add the ESP32 in the boards manager
+
+
+There is a lot of librarys in use and since the code will take 3-10 minutes per compile be sure to have all libraries installed.
+
+
+
+
+
+
+I use these settings below
+
 <img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
 
+Compile time can take a while. between 3-10 minutes. 
 
 
 
