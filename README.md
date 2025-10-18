@@ -21,7 +21,8 @@
 14. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
 15. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
 16. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
-17. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
+17. Factory Reset
+18. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
 # Overview
@@ -270,8 +271,6 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 <img width="744" height="894" alt="image" src="https://github.com/user-attachments/assets/ce6d7046-4fce-49f5-9f1d-1cc99203f105" />
 
 
-
-
 # Known Missing Features
 Compared to SDI return feed / HDMI CEC:
 - Focus control not implemented (ATEM software limitation)
@@ -285,6 +284,12 @@ Only **USB 3.0 Gigabit (1000 Mbps)** adapters are recognized by cameras.
 **100 Mbps** adapters are **not supported**, even though the ESP32 runs at 100 Mbps internally.
 If you need a external drive to record, USB-C hubs with network also work. 
 I have tested multiple and most work.
+
+# Factory Reset
+Base can be factory reset by pressing and holding in the extra mounted dipswitch on the side for 5 seconds.
+OLED will show progress bar while holding reset button down, and if released before 5 seconds it cansels the reset.
+
+
 
 # License
 
