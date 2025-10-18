@@ -13,13 +13,14 @@ Note: This is one of my first GitHub projects — I’ll keep improving the docu
 7. [Future Development](https://github.com/Magnusvals/ANCS/blob/main/README.md#future-development)
 8. [Hardware](https://github.com/Magnusvals/ANCS/blob/main/README.md#hardware)
 9. [Antenna Selection](https://github.com/Magnusvals/ANCS/blob/main/README.md#antenna-selection)
-10. [Arduino IDE Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#arduino-ide-setup)
-11. [Uploading Firmware](https://github.com/Magnusvals/ANCS/blob/main/README.md#uploading-firmware)
-12. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
-13. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
-14. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
-15. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
-16. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
+10. [Schematics](https://github.com/Magnusvals/ANCS/edit/main/README.md#schematics)
+11. [Arduino IDE Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#arduino-ide-setup)
+12. [Uploading Firmware](https://github.com/Magnusvals/ANCS/blob/main/README.md#uploading-firmware)
+13. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
+14. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
+15. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
+16. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
+17. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
 # Overview
@@ -146,6 +147,15 @@ Switching to an external antenna:
 - Use WebUI or OLED to monitor RSSI
 - Higher dBi = longer range
 - **5GHz antennas will not work!**
+
+# Schematics
+Here is the schematics i have for my base and camera remote setup
+
+<img width="1236" height="1180" alt="image" src="https://github.com/user-attachments/assets/777aec6e-6511-4814-8bfb-866ecf981aec" />
+
+<img width="1054" height="722" alt="image" src="https://github.com/user-attachments/assets/e2ea6e3a-ba2b-4c4d-bdd8-1ab5daf9d253" />
+
+
 
 
 # Arduino IDE Setup
