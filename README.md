@@ -1,4 +1,5 @@
 # ANCS (Atem Network Controller System)
+<img width="300" height="300" alt="ANCS Logo 3" src="https://github.com/user-attachments/assets/e5abe132-83df-4192-94d2-5aa8a026f4ec" />
 
 Note: This is one of my first GitHub projects — I’ll keep improving the documentation as the project evolves!
 
