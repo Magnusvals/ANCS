@@ -152,6 +152,46 @@ Switching to an external antenna:
 # Schematics
 Here is the schematics i have for my base and camera remote setup
 
+I use RJ45 cables and connector for connecting remote handles and motor to the system because it's an easily available cable.
+For the Remote handle I use STP cable and use the Sheild for joystick button return (Does nothing at the moment.)
+
+Stepper driver:
+- GND - GND
+- VM - Voltage input (12-24v)
+- M1A - White Green (RJ45 Motor)
+- M1B - Green (RJ45 Motor)
+- M2A - Orange (RJ45 Motor)
+- M2B - White Orange (RJ45 Motor)
+- VIO - 3V3 on ESP32-S3
+- DIR - IO34 on ESP32-S3
+- STEP - IO 33 on ESP32-S3
+- NC - IO46 on ESP32-S3 (with 1k between 46 and 47)
+- EN - Blue (RJ45 Motor)
+
+>Driver enable goes thru the motor RJ45 to disable driver when motor is disconnected and when ESP32-S3 disables it.
+>Comes back on White Blue RJ45 Motor) and goes to IO45 on ESP32-S3.
+
+Voltage Step Down Driver:
+- In+ - Voltage input (12-24v) 
+- In- - GND
+- Out+ VSYS on ESP32-S3 (NOT VBUS)
+- Out- - GND (Can omit)
+
+Remote handle:
+- Encoder 1 Clock - Green (RJ45 Handle) - IO18 on ESP32-S3
+- Encoder 1 Data - White Green (RJ45 Handle) - IO16 on ESP32-S3
+- Encoder 2 Clock - Orange (RJ45 Handle) - IO41 on ESP32-S3
+- Encoder 2 Data - White Orange (RJ45 Handle) - IO42 on ESP32-S3
+- Joystick X - Blue (RJ45 Handle) - IO1 on ESP32-S3
+- Joystick Y - White Blue (RJ45 Handle) - IO2 on ESP32-S3
+- Joystick switch - Sield (RJ45 Handle) - IO 40 on ESP32-S3
+
+> Joystick X and Y has 20K resistors between GND and 3V3 to keep voltage centered when remote is disconnected.
+
+- 3.3v is sent over White Brown (RJ45 Handle) from 3V3 on ESP32-S3
+- GND is sent over Brown (RJ45 Handle)
+
+
 <img width="1236" height="1180" alt="image" src="https://github.com/user-attachments/assets/777aec6e-6511-4814-8bfb-866ecf981aec" />
 
 <img width="1054" height="722" alt="image" src="https://github.com/user-attachments/assets/e2ea6e3a-ba2b-4c4d-bdd8-1ab5daf9d253" />
