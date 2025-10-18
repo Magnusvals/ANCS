@@ -156,8 +156,6 @@ Here is the schematics i have for my base and camera remote setup
 <img width="1054" height="722" alt="image" src="https://github.com/user-attachments/assets/e2ea6e3a-ba2b-4c4d-bdd8-1ab5daf9d253" />
 
 
-
-
 # Arduino IDE Setup
 
 1. Download [Arduino IDE](https://www.arduino.cc/en/software/) (tested with v2.3.6)
@@ -226,8 +224,9 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 - Zoom motor settings (current, direction)
 - Focus mode (incremental/direct)
 
-<img width="796" height="819" alt="image" src="https://github.com/user-attachments/assets/1492403f-5c77-45ad-a2a9-29e5a92ee7f0" />
+<img width="739" height="840" alt="image" src="https://github.com/user-attachments/assets/60cd8fe5-7991-40d7-b7bf-9ff728ab85f8" />
 
+<img width="741" height="887" alt="image" src="https://github.com/user-attachments/assets/658c6fd4-6327-4cb4-b5dc-95bef7c62574" />
 
 
 
@@ -238,7 +237,7 @@ Compared to SDI return feed / HDMI CEC:
 - Camera tally ring not supported via REST API
 
 *Workaround:* onboard RGB LED acts as tally indicator.
-You can extend it with Toslink fiber for easier visibility on operated cameras.
+You can extend it with Toslink fiber for easier visibility on cameras with operators.
 
 # USB-C Ethernet Adapters
 Only **USB 3.0 Gigabit (1000 Mbps)** adapters are recognized by cameras.
