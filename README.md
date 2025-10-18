@@ -57,8 +57,8 @@ This system works with any Blackmagic camera that supports the Blackmagic REST A
 
 🔗 [Blackmagic Beta Firmware 8.6](https://www.blackmagicdesign.com/support/readme/66b832f9f1b04e92960a3117d7a741df)
 
-⚠️ Make sure to enable Web Manager on all cameras using the official Camera Setup software.
-Without this, the REST API will not work.
+> [!IMPORTANT]
+> ⚠️ Make sure to enable Web Manager on all cameras using the official Camera Setup software.
 
 # ATEM Control Features
 
@@ -227,6 +227,11 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 **Board:** ESP32S3 Dev Module
 **Power:** via PoE or USB-C
 **Select COM Port:** Each board has a unique, consistent COM port.
+
+> [!CAUTION]
+> Only when uploading first time use "Erase All Flash Before Sketch Upload" as enabeled.
+> 
+> Next upload will clear all stored settings done in Web Setup!
 
 <img width="492" height="686" alt="image" src="https://github.com/user-attachments/assets/6f949b59-9206-4541-ac31-7644b4ff46b2" />
 
