@@ -226,6 +226,11 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 - Zoom motor settings (current, direction)
 - Focus mode (incremental/direct)
 
+<img width="796" height="819" alt="image" src="https://github.com/user-attachments/assets/1492403f-5c77-45ad-a2a9-29e5a92ee7f0" />
+
+
+
+
 
 # Known Missing Features
 Compared to SDI return feed / HDMI CEC:
