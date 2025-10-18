@@ -225,9 +225,9 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 - Zoom motor settings (current, direction)
 - Focus mode (incremental/direct)
 
-<img width="739" height="840" alt="image" src="https://github.com/user-attachments/assets/60cd8fe5-7991-40d7-b7bf-9ff728ab85f8" />
+<img width="743" height="841" alt="image" src="https://github.com/user-attachments/assets/6caba952-77e4-4a6a-ac0d-33deac882017" />
 
-<img width="741" height="887" alt="image" src="https://github.com/user-attachments/assets/658c6fd4-6327-4cb4-b5dc-95bef7c62574" />
+<img width="744" height="894" alt="image" src="https://github.com/user-attachments/assets/ce6d7046-4fce-49f5-9f1d-1cc99203f105" />
 
 
 
