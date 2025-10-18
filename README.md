@@ -21,7 +21,7 @@
 14. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
 15. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
 16. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
-17. Factory Reset
+17. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
 18. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
@@ -289,6 +289,7 @@ I have tested multiple and most work.
 Base can be factory reset by pressing and holding in the extra mounted dipswitch on the side for 5 seconds.
 OLED will show progress bar while holding reset button down, and if released before 5 seconds it cansels the reset.
 
+Camera Remote does not as of Version 1.0.0 have a factory reset function.
 
 
 # License
