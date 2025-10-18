@@ -2,7 +2,7 @@
 <img width="642" height="350" alt="ANCS Logo Wide" src="https://github.com/user-attachments/assets/a9dc9faa-8d4a-4e26-b590-a3b14266a7b1" />
 
 
-Note: This is one of my first GitHub projects — I’ll keep improving the documentation as the project evolves!
+>Note: This is one of my first GitHub projects — I’ll keep improving the documentation as the project evolves!
 
 # 📖Table of Contents
 1. [Overview](https://github.com/Magnusvals/ANCS/blob/main/README.md#overview)
@@ -26,9 +26,9 @@ Note: This is one of my first GitHub projects — I’ll keep improving the docu
 
 # Overview
 
-The Atem Network Controller System (ANCS) transfers CCU camera control data from Blackmagic ATEM video switchers to compatible Blackmagic cameras over the network, using the Blackmagic Camera REST API.
+The Atem Network Controller System (ANCS) transfers CCU camera control data from Blackmagic ATEM video switchers to compatible Blackmagic cameras over a selfemiting wireless network, using the Blackmagic Camera REST API.
 Blackmagic cameras can already receive control data via:
-- HDMI (Pocket 6K, Micro Studio Camera 4K G2, etc.)0
+- HDMI (Pocket 6K, Micro Studio Camera 4K G2, etc.)
 - SDI return feed (URSA Mini, Studio Cameras, etc.)
 
 However, if you’re using wireless video transmission or lack SDI return, you lose camera control.
@@ -243,6 +243,8 @@ You can extend it with Toslink fiber for easier visibility on cameras with opera
 # USB-C Ethernet Adapters
 Only **USB 3.0 Gigabit (1000 Mbps)** adapters are recognized by cameras.
 **100 Mbps** adapters are **not supported**, even though the ESP32 runs at 100 Mbps internally.
+If you need a external drive to record, USB-C hubs with network also work. 
+I have tested multiple and most work.
 
 # License
 
