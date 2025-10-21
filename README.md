@@ -210,7 +210,7 @@ Remote handle:
 - ArduinoJson (v7.4.2)
 - TMCStepper (v0.7.3)
 - ESP32Encoder (v0.11.8)
-- Adafruit_SSD1306 (v2.5.14)
+- Adafruit_SSD1306 (v2.5.15)
 
 
 **Custom (Modified Skaarhoj)**
