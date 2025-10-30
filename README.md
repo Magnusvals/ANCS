@@ -1,8 +1,11 @@
 # ANCS (Atem Network Controller System)
 <img width="642" height="350" alt="ANCS Logo Wide" src="https://github.com/user-attachments/assets/a9dc9faa-8d4a-4e26-b590-a3b14266a7b1" />
 
+> [!NOTE]
+> NEW (Pre Release) version of ANCS. with wired camera support.
+> [See pre release note:](https://github.com/Magnusvals/ANCS/releases/tag/V1.0.20-pre-release)
 
->Note: This is one of my first GitHub projects — I’ll keep improving the documentation as the project evolves!
+
 
 # 📖Table of Contents
 1. [Overview](https://github.com/Magnusvals/ANCS/blob/main/README.md#overview)
@@ -17,12 +20,13 @@
 10. [Schematics](https://github.com/Magnusvals/ANCS/edit/main/README.md#schematics)
 11. [Arduino IDE Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#arduino-ide-setup)
 12. [Uploading Firmware](https://github.com/Magnusvals/ANCS/blob/main/README.md#uploading-firmware)
-13. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
-14. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
-15. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
-16. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
-17. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
-18. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
+14. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
+15. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
+16. [How to use system](https://github.com/Magnusvals/ANCS/edit/main/README.md#how-to-use-system)
+17. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
+18. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
+19. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
+20. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
 # Overview
@@ -275,6 +279,18 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 
 <img width="744" height="894" alt="image" src="https://github.com/user-attachments/assets/ce6d7046-4fce-49f5-9f1d-1cc99203f105" />
 
+# How to use system
+1. Connect to default IP of Base (Default 192.168.1.200).
+2. Change IP of Base (if needed) and ATEM IP to point to ATEM (this will reboot system).
+3. Note down Base WL mac. 
+4. Connect to WIFi that camera remote will start up after 15sec. Wifi will be ANCS- and the WL MAC of the camera remote
+5. Note down camera remote WL Mac.
+6. Put in Base WL MAC into camera remote and save.
+7. Go back to Base WebUI, put in camera remote WL mac in a Slot.
+8. In the slot put in IP of camera and what the camera remote will use.
+9. Enable or disable functions in slot setup. (all other settings not able to be set physically on camera is allways on)
+10. System sould work now.
+
 
 # Known Missing Features
 Compared to SDI return feed / HDMI CEC:
@@ -295,6 +311,8 @@ Base can be factory reset by pressing and holding in the extra mounted dipswitch
 OLED will show progress bar while holding reset button down, and if released before 5 seconds it cansels the reset.
 
 Camera Remote does not as of Version 1.0.0 have a factory reset function.
+
+Pre Release V1.0.20 supports both base and camera remote factory reset thru sending "enter key" when rebooing unit with serial terminal open.
 
 
 # License
