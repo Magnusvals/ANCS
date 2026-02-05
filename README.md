@@ -1,10 +1,12 @@
+> [!NOTE]
+> I am working on making new documentation for new feutures i have worked on over the past months so keep watching for updates.
+
 # ANCS (Atem Network Controller System)
 <img width="642" height="350" alt="ANCS Logo Wide" src="https://github.com/user-attachments/assets/a9dc9faa-8d4a-4e26-b590-a3b14266a7b1" />
 
 > [!NOTE]
 > NEW (Pre Release) version of ANCS. with wired camera support.
 > [See pre release note:](https://github.com/Magnusvals/ANCS/releases/tag/V1.0.20-pre-release)
-
 
 
 # 📖Table of Contents
@@ -23,10 +25,12 @@
 14. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
 15. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
 16. [How to use system](https://github.com/Magnusvals/ANCS/edit/main/README.md#how-to-use-system)
-17. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
-18. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
-19. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
-20. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
+17. VISCA over IP [Experimental]
+18. Panasonic AW Protocol [Experimental]
+19. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
+20. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
+21. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
+22. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
 # Overview
@@ -87,7 +91,6 @@ You can control the following from the ATEM Software Control app:
 # Current Limitations
 
 - Tally Lights: Not yet supported via REST API (requested from Blackmagic).
-- Focus Control: ATEM’s focus control interface is unstable and not yet implemented.
   
 For MFT lenses, the Panasonic 45–175mm, 14-42mm Power Zoom works well.
 For non-power zoom lenses, a NEMA17 stepper motor with a TMC2209 driver can be used.
