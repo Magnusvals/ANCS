@@ -20,8 +20,8 @@
 14. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
 15. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
 16. [How to use system](https://github.com/Magnusvals/ANCS/edit/main/README.md#how-to-use-system)
-17. CCU Panel
-18. PTZ Control [Experimental]
+17. [CCU Panel](https://github.com/Magnusvals/ANCS/blob/main/README.md#ccu-panel)
+18. [PTZ Control [Experimental]](https://github.com/Magnusvals/ANCS/edit/main/README.md#ptz-control-experimental)
 20. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
 21. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
 22. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
