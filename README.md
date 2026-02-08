@@ -4,11 +4,6 @@
 # ANCS (Atem Network Controller System)
 <img width="642" height="350" alt="ANCS Logo Wide" src="https://github.com/user-attachments/assets/a9dc9faa-8d4a-4e26-b590-a3b14266a7b1" />
 
-> [!NOTE]
-> NEW (Pre Release) version of ANCS. with wired camera support.
-> [See pre release note:](https://github.com/Magnusvals/ANCS/releases/tag/V1.0.20-pre-release)
-
-
 # 📖Table of Contents
 1. [Overview](https://github.com/Magnusvals/ANCS/blob/main/README.md#overview)
 2. [How It Works](https://github.com/Magnusvals/ANCS/blob/main/README.md#how-it-works)
@@ -25,12 +20,12 @@
 14. [System Architecture](https://github.com/Magnusvals/ANCS/blob/main/README.md#system-architecture)
 15. [Base Web Setup](https://github.com/Magnusvals/ANCS/blob/main/README.md#base-web-setup)
 16. [How to use system](https://github.com/Magnusvals/ANCS/edit/main/README.md#how-to-use-system)
-17. VISCA over IP [Experimental]
-18. Panasonic AW Protocol [Experimental]
-19. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
-20. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
-21. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
-22. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
+17. CCU Panel
+18. PTZ Control [Experimental]
+20. [Known Missing Features](https://github.com/Magnusvals/ANCS/blob/main/README.md#known-missing-features)
+21. [USB-C Ethernet Adapters](https://github.com/Magnusvals/ANCS/blob/main/README.md#usb-c-ethernet-adapters)
+22. [Factory Reset](https://github.com/Magnusvals/ANCS/edit/main/README.md#factory-reset)
+23. [License](https://github.com/Magnusvals/ANCS/blob/main/README.md#license)
 
 
 # Overview
@@ -71,7 +66,7 @@ This system works with any Blackmagic camera that supports the Blackmagic REST A
 # ATEM Control Features
 
 You can control the following from the ATEM Software Control app:
-
+- [NEW] Focus
 - Iris
 - Gain / ISO
 - White Balance
@@ -294,10 +289,72 @@ Install via: Sketch → Include Library → Add .ZIP Library…
 9. Enable or disable functions in slot setup. (all other settings not able to be set physically on camera is allways on)
 10. System sould work now.
 
+# CCU Panel
+The new CCU panel can control all color functions in ATEM color page.
+Functions is:
+- 4 OLED displays for showing values
+- 8 Encoder for adjusting values on OLED
+- 8 camera quick select buttons
+- Page buttons for changing what OLED shows
+- Tally Light showing camera number and on air state
+- Bluetooth Gamepad Support for controlling
+
+it uses multiple ESP32 boards for now because i could not get all OLED on 1 ESP32-S3 because of addressing. (Could be fixed with a I2C switch)
+My CCU Panel is made of 4 ESP32 boards:
+- MCU 1 is a ESP32-S3 ETH (Same as BASE) (handles Bluetooth, all 8 encoders and OLED 1)
+- MCU 2 is a ESP32-S3 8x8 RGB Led Matrix (Tally Number indicator, handles 4x4 Keypad and OLED 2)
+- MCU 3-4 is ESP32-C3 that handles only OLED 3 and 4 
+
+MCU 1 and 2 talkes over TTL uart and MCU 3 and 4 listens to same TX UART from MCU 1
+
+<img width="998" height="745" alt="image" src="https://github.com/user-attachments/assets/5fb361ea-33cd-48e1-90f8-ece11e25de3d" />
+
+MCU 1 needs to use Bluepad32 Firmware.
+
+CCU Panel will auto connect to a BLE supported Gamepad that is close to the unit.
+Controller will be kept awake for 10 minutes after last movement.
+
+I have only tested that Xbox One Controller (Model 1797 with FW 5.15 or higher)
+Check Bluepad32 documentation for supported controllers.
+
+
+<img width="834" height="640" alt="image" src="https://github.com/user-attachments/assets/353c3058-acfc-48e5-8557-243d19f526ab" />
+
+
+
+
+
+
+
+
+# PTZ Control [Experimental]
+A simple VISCA over IP and Panasonic AW protocol is added to be able to control PTZ cameras over network.
+
+I have tested with a Avonic CM93 and Panasonic AW-UE130 PTZ.
+
+Pan, Tilt and Zoom control is done with the CCU panel with a Xbox Controller or Blackmagic Advanced Panel Joystick in Camera Control mode
+
+Gain / Highlight is mapped to Gain
+Pedestal / Shadow is mapped to Lift inside ATEM
+
+Supported functions:
+- Pan & Tilt (Both)
+- Zoom & Focus (Both)
+- Autofocus trigger (Both)
+- R Gain (Both)
+- B Gain (Both)
+- Master Pedestal (AW)
+- R Pedestal (AW)
+- B Pedestal (AW)
+  
+
+Regarding Panasonic Camera (Atleast for AW-UE130) you need to enable VAR in Whitebalance inside the OSD menu on the web gui of camera to be able to adjust Pedestal and Gain.
+
+
 
 # Known Missing Features
 Compared to SDI return feed / HDMI CEC:
-- Focus control not implemented (ATEM software limitation)
+- Focus control not implemented
 - Camera tally ring not supported via REST API
 
 *Workaround:* onboard RGB LED acts as tally indicator.
