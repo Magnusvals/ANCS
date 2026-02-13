@@ -109,10 +109,7 @@ Captive portal automatically opens on most devices.
 Windows may require manual IP entry.
 
 # Future Development
-🔋 Standalone Battery-Powered Tally Light
-Planned: a USB-C rechargeable ESP32-C3 tally light with:
-- 5–6 hour battery life
-- Battery level displayed on the base controller
+
 
 
 # Hardware
