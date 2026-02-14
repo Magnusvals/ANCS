@@ -1,1 +1,0 @@
-Documentation about FIZ monitor
